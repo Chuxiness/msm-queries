@@ -25,7 +25,7 @@
 <th>Director</th>
 <th></th>
 </tr>
-
+<h2>Filmography</h2>
 <% matching_movies= Movie.where({ :director_id => @the_director.id }) %>
 <% matching_movies.each do |a_movie| %>
 <tr>
@@ -34,7 +34,7 @@
 <td><%= a_movie.title %></td>
 <td><%= a_movie.year %></td>
 <td><%= a_movie.director_id %></td>
-<td>Show details</td>
+<td><a href="/movies/<%= a_movie.id %>">Show details</a></td>
 </tr>
 <% end %>
 </table>
