@@ -9,8 +9,32 @@
 <dt>Bio</dt>
 <dd><%=@the_director.bio%></dd>
 <dt>Image</dt>
-<dd><image src="<%=@the_director.image%>" width="50"></dd>
+<dd><img src="<%=@the_director.image%>" width="50"></dd>
+<dt>Created at</dt>
+<dd><%=@the_director.created_at%></dd>
+<dt>Updated at</dt>
+<dd><%=@the_director.updated_at%></dd>
 </dl>
 
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Image</th>
+<th>Title</th>
+<th>Year</th>
+<th>Director</th>
+<th></th>
+</tr>
 
-<%= @the_director.dob %>
+<% matching_movies= Movie.where({ :director_id => @the_director.id }) %>
+<% matching_movies.each do |a_movie| %>
+<tr>
+<td><%= a_movie.id %></td>
+<td><image src="<%= a_movie.image %>"width="50"></td>
+<td><%= a_movie.title %></td>
+<td><%= a_movie.year %></td>
+<td><%= a_movie.director_id %></td>
+<td>Show details</td>
+</tr>
+<% end %>
+</table>
